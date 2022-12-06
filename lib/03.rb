@@ -18,7 +18,7 @@ class Day3
     end
   end
 
-  def common_item(r) = rucksack_h1(r).chars.intersection(rucksack_h2(r).chars).first
+  def common_item(r) = (rucksack_h1(r).chars & rucksack_h2(r).chars).first
 
   def rucksack_h1(r) = r[0..(r.size/2 - 1)]
   def rucksack_h2(r) = r[(r.size/2)..]
@@ -28,3 +28,6 @@ class Day3
     priority(first.intersection(*rest).first)
   end
 end
+
+puts Day3.new.part1
+puts Day3.new.part2
