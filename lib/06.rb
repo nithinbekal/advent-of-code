@@ -1,18 +1,14 @@
 class Day6
-  def part1
-    batches = file.chars.each_cons(4).to_a
-    seq = batches.find { |chars| chars.uniq.length == 4 }
-    batches.index(seq) + 4
-  end
-
-  def part2
-    batches = file.chars.each_cons(14).to_a
-    seq = batches.find { |chars| chars.uniq.length == 14 }
-    batches.index(seq) + 14
-  end
+  def part1 = find_unique_string(4)
+  def part2 = find_unique_string(14)
 
   private
 
+  def find_unique_string(length)
+    batches = file.chars.each_cons(length).to_a
+    seq = batches.find { |chars| chars.uniq.length == length }
+    batches.index(seq) + length
+  end
+
   def file = @file ||= File.read("input/06.txt")
-  def lines = File.readlines("input/06.txt", chomp: true)
 end
