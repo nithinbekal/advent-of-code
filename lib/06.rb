@@ -5,10 +5,15 @@ class Day6
   private
 
   def find_unique_string(length)
-    batches = file.chars.each_cons(length).to_a
-    seq = batches.find { |chars| chars.uniq.length == length }
-    batches.index(seq) + length
+    file.chars
+      .each_cons(length)
+      .find_index { |chars| chars.uniq.length == length }
+      .then { _1 + length }
   end
 
-  def file = @file ||= File.read("input/06.txt")
+  def file = File.read("input/06.txt")
 end
+
+puts Day6.new.part1
+puts Day6.new.part2
+
